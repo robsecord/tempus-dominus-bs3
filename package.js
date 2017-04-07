@@ -6,11 +6,20 @@ Package.describe({
   documentation: 'README.md'
 });
 
+Npm.depends({
+    "moment": "2.17.1",
+    "moment-timezone": "0.5.10"
+});
+
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('ecmascript');
 
-  api.addFiles('tempusdominus-core.js', 'client');
-  api.addFiles('tempusdominus-bootstrap-3.js', 'client');
-  api.addFiles('tempusdominus-bootstrap-3.css', 'client');
+  api.addFiles([
+      '.npm/package/node_modules/moment/min/moment-with-locales.js',
+      '.npm/package/node_modules/moment-timezone/builds/moment-timezone-with-data.js',
+      'tempusdominus-core.js',
+      'tempusdominus-bootstrap-3.js',
+      'tempusdominus-bootstrap-3.css'
+  ], 'client');
 });
